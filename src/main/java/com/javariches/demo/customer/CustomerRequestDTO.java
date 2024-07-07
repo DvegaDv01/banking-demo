@@ -1,4 +1,4 @@
 package com.javariches.demo.customer;
 
-public record CreateCustomerRequest() {
+public record CustomerRequestDTO() {
 }

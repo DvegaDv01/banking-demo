@@ -1,40 +1,69 @@
 package com.javariches.demo.customer;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Getter;
+
+@Getter
+@Entity
 public class Customer {
-    private String name;
+
+
+    private String firstName;
+    private String lastName;
     private String email;
     private String address;
-    public static Customer create(String name, String email, String address) {
-        Customer customer = new Customer();
-        customer.setName(name);
-        customer.setEmail(email);
-        customer.setAddress(address);
-        return customer;
+
+    private String dob;
+
+    private int phoneNumber;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    protected Customer(){
+
     }
-    public void setName(String name) {
-        this.name = name;
+
+    public Customer(String firstName, String lastName, String email, String address) {
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+    }
+    public void setFirstName(String firstName) {
+
+        this.firstName = firstName;
+    }
+    public void setLastName(String lastName) {
+
+        this.lastName = lastName;
     }
 
     public void setEmail(String email) {
+
         this.email = email;
     }
 
     public void setAddress(String address) {
+
         this.address = address;
     }
 
-    public String getName() {
-
-        return name;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
-    public String getEmail() {
-
-        return email;
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getAddress() {
 
-        return address;
+    public void setId(Long id) {
+        this.id = id;
     }
+
 }
