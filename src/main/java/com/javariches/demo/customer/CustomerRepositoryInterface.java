@@ -1,10 +1,9 @@
 package com.javariches.demo.customer;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CustomerRepositoryInterface {
+public interface CustomerRepositoryInterface extends CrudRepository<Customer,Long> {
 
-
-    void save(Customer customer);
 }

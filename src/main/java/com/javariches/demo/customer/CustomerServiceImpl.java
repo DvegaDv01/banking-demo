@@ -6,13 +6,11 @@ import org.springframework.stereotype.Service;
 public class CustomerServiceImpl implements CustomerServiceInterface {
 
 
-    final CustomerServiceInterface serviceInterface;
-    final CustomerRepositoryImpl customerRepositoryImpl;
+    final CustomerRepositoryInterface customerRepositoryInterface;
 
 
-    public CustomerServiceImpl(CustomerServiceInterface serviceInterface, CustomerRepositoryImpl customerRepositoryImpl){
-        this.serviceInterface = serviceInterface;
-        this.customerRepositoryImpl = customerRepositoryImpl;
+    public CustomerServiceImpl(CustomerRepositoryInterface customerRepositoryInterface){
+        this.customerRepositoryInterface = customerRepositoryInterface;
     }
 
     @Override
@@ -22,7 +20,7 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
         customer.setLastName(lastName);
         customer.setEmail(email);
         customer.setAddress(address);
-        customerRepositoryImpl.save(customer);
+        customerRepositoryInterface.save(customer);
         return customer.getFirstName() + " " + customer.getLastName() + "'s profile has been created";
 
 

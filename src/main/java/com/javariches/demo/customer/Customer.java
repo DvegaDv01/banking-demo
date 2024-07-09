@@ -1,28 +1,37 @@
 package com.javariches.demo.customer;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 @Getter
 @Entity
+@Table(name = "customers", schema = "users")
 public class Customer {
 
-
+    // Attributes //
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name="last_name")
     private String lastName;
+
+    @Column
     private String email;
+
+    @Column
     private String address;
 
+    @Column
     private String dob;
 
+    @Column
     private int phoneNumber;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Methods //
     protected Customer(){
 
     }
