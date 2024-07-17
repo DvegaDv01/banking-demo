@@ -1,30 +1,37 @@
 package com.javariches.demo.customer;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CustomerServiceImpl implements CustomerServiceInterface {
 
 
-    final CustomerRepositoryInterface customerRepositoryInterface;
+    private final CustomerRepositoryInterface customerRepositoryInterface;
+    private final CustomerMapper mapper;
 
 
-    public CustomerServiceImpl(CustomerRepositoryInterface customerRepositoryInterface){
+    public CustomerServiceImpl(CustomerRepositoryInterface customerRepositoryInterface, CustomerMapper mapper){
         this.customerRepositoryInterface = customerRepositoryInterface;
+        this.mapper = mapper;
     }
 
+    @Transactional
     @Override
-    public String createCustomer(String firstName, String lastName, String email, String address){
-        Customer customer = new Customer();
-        customer.setFirstName(firstName);
-        customer.setLastName(lastName);
-        customer.setEmail(email);
-        customer.setAddress(address);
+    public Customer createCustomer(CustomerRequestDTO dto){
+        //validate input data
+        // validation logic
+
+        // map request to entity
+        Customer customer = mapper.toCustomer(dto);
+        // persist data
         customerRepositoryInterface.save(customer);
-        return customer.getFirstName() + " " + customer.getLastName() + "'s profile has been created";
-
-
+        // log service transaction
+        System.out.println(customer.getFirstName() + " " + customer.getLastName() + "'s profile has been created");
+        return customer;
     }
+
+
 
     @Override
     public void deleteCustomer() {

@@ -24,7 +24,7 @@ public class Customer {
     @Column
     private String dob;
 
-    @Column
+    @Column(name="phone_number")
     private int phoneNumber;
 
     @Id
@@ -32,16 +32,16 @@ public class Customer {
     private Long id;
 
     // Methods //
-    protected Customer(){
-
-    }
-
     public Customer(String firstName, String lastName, String email, String address) {
 
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.address = address;
+    }
+
+    protected Customer(){
+
     }
     public void setFirstName(String firstName) {
 

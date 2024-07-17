@@ -3,7 +3,7 @@ package com.javariches.demo.customer;
 public interface CustomerServiceInterface {
 
     // User access methods
-    String createCustomer(String firstName, String lastName, String email, String address);
+    Customer createCustomer(CustomerRequestDTO dto);
     void deleteCustomer();
     void processAccountApplication();
     void applicationDecision();
