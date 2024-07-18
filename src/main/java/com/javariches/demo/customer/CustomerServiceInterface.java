@@ -4,7 +4,7 @@ public interface CustomerServiceInterface {
 
     // User access methods
     Customer createCustomer(CustomerRequestDTO dto);
-    void deleteCustomer();
+    void deleteCustomer(Long id);
     void processAccountApplication();
     void applicationDecision();
     void login();

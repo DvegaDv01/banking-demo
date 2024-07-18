@@ -3,6 +3,8 @@ package com.javariches.demo.customer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 public class CustomerServiceImpl implements CustomerServiceInterface {
 
@@ -34,7 +36,12 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
 
 
     @Override
-    public void deleteCustomer() {
+    public void deleteCustomer(Long id) {
+        // the type returned by the findBy method is of Optional<>
+        Optional<Customer> customer = customerRepositoryInterface.findById(id);
+        if (customer.isPresent()){
+            customerRepositoryInterface.delete(customer.get());
+        };
 
     }
 
