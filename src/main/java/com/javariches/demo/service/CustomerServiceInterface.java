@@ -1,4 +1,7 @@
-package com.javariches.demo.customer;
+package com.javariches.demo.service;
+
+import com.javariches.demo.dto.CustomerRequestDTO;
+import com.javariches.demo.entity.Customer;
 
 public interface CustomerServiceInterface {
 
